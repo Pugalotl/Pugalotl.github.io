@@ -31,6 +31,7 @@ function generate() {
 	
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	var lettercheck = 0
 	for (let points = 0; points < 5; points++)
 	{
@@ -56,6 +57,7 @@ function generate() {
 	}
 	}
 	lettercheck += 1;
+	console.log(ctx.getImageData(0, 0, 1, 1).data);
 	}
 }
 
