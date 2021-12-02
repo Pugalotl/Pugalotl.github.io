@@ -59,6 +59,44 @@ function generate() {
 	lettercheck += 1;
 	console.log(ctx.getImageData(0, 0, 1, 1).data);
 	}
+	var lettercheck = 0
+	for (let points = 0; points < 5; points++)
+	{
+	let stringd = ""
+	let current = document.getElementById("input2").value
+	if (current.charAt(lettercheck) == " ")
+	{
+	stringd = "00000"	
+	}
+	else
+	{
+    stringd = dec2bin(current.charAt(lettercheck).charCodeAt() - 96)
+	}
+	while (stringd.length < 5)
+	{
+	stringd = "0" + stringd	
+	}
+	for (let i = 0; i < 5; i++)
+	{
+	if (stringd.charAt(i) == 1)
+	{
+	var data = ctx.getImageData(items[i+(5*lettercheck)][1]*16, items[i+(5*lettercheck)][0]*16, 1, 1).data;
+	console.log(data[3])
+	if (data[3] == 255)
+	{
+	ctx.fillStyle = "#FF0000";
+	ctx.fillRect(items[i+(5*lettercheck)][1]*16, items[i+(5*lettercheck)][0]*16, 16, 16);
+	}
+	else
+	{
+	ctx.fillStyle = "#FF9D00";
+	ctx.fillRect(items[i+(5*lettercheck)][1]*16, items[i+(5*lettercheck)][0]*16, 16, 16);
+	}
+	}
+	}
+	lettercheck += 1;
+	}
+	ctx.fillStyle = "#000000";
 }
 
 
