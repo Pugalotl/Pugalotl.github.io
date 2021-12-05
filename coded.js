@@ -1,5 +1,3 @@
-
-
 function generate() {
 	const items = [
 	[0, 0],
